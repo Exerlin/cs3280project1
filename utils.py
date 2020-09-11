@@ -6,26 +6,24 @@
     credit_card_number is not genuine.
 '''
 def luhn_verified(int_array):
-    for index in range(len(int_array)):
-        if(index % 2 == 1):
+    sum_of_all_numbers = 0
+    
+    for index in range(len(int_array) - 1):
+        if(index % 2 == len(int_array) % 2):
             int_array[index] = int_array[index] * 2
         if(int_array[index] > 9):
             int_array[index] = int_array[index] - 9
+        sum_of_all_numbers += int_array[index]
 
-    sum_of_all_numbers = 0
-    
-    for current_int in int_array:
-        sum_of_all_numbers += current_int
-
-    if(((sum_of_all_numbers * 9) % 10) == 0):
-        return "Authentic" + str(sum_of_all_numbers)
+    if(((sum_of_all_numbers % 10) + int_array[len(int_array) - 1]) == 10):
+        return "Authentic"
     else:
-        return "Fake" + str(sum_of_all_numbers)
-        
+        return "Fake"
+
 '''
     is_valid(sequence) that returns true
     if the specified string sequence is in a valid credit card number format,
-    and false otherwise. 
+    and false otherwise.
 '''
 def is_valid(sequence):
     try:
