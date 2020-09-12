@@ -70,20 +70,23 @@ def match_card_type_first_numbers(the_int, index_of_type_to_test):
             
     return False
 
-parse_ssv()
-print(array_of_string_arrays)
-print(str(match_card_type_length(123456789012345, 0)))
-print(str(match_card_type_length(15, 1)))
-print(str(match_card_type_first_numbers(622130, 7)))
-print(str(match_card_type_first_numbers(353456789012345, 0)))
+def print_credit_card_results(number):
+    print("Credit card number: " + number)
+    print("Credit card type: " + find_credit_card_type(number))
+    print("Luhn verification: " + utils.luhn_verified(int_to_array(number)))
 
+def get_input(prompt):
+    print(prompt)
+    return input()
 
-while True:
-    print('Please enter a credit card number:')
-    number = input()
-    number = (regex_check_for_errors(number))
-    if(utils.is_valid(number)):
-        print("Credit card number: " + number)
-        print("Credit card type: " + find_credit_card_type(number))
-        print("Luhn verification: " + utils.luhn_verified(int_to_array(number)))
+def main():
+    parse_ssv()
+    while True:
+        number = get_input('Please enter a credit card number:')
+        number = (regex_check_for_errors(number))
+        if(utils.is_valid(number)):
+            print_credit_card_results(number)
+
+if __name__ == "__main__":
+    main()
 
