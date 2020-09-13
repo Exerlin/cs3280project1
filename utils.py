@@ -5,17 +5,17 @@
     “Authentic” if the card is real or “Fake” if the specified
     credit_card_number is not genuine.
 '''
-def luhn_verified(int_array):
+def luhn_verified(credit_card_number):
     sum_of_all_numbers = 0
     
-    for index in range(len(int_array) - 1):
-        if(index % 2 == len(int_array) % 2):
-            int_array[index] = int_array[index] * 2
-        if(int_array[index] > 9):
-            int_array[index] = int_array[index] - 9
-        sum_of_all_numbers += int_array[index]
+    for index in range(len(credit_card_number) - 1):
+        if(index % 2 == len(credit_card_number) % 2):
+            credit_card_number[index] = credit_card_number[index] * 2
+        if(credit_card_number[index] > 9):
+            credit_card_number[index] = credit_card_number[index] - 9
+        sum_of_all_numbers += credit_card_number[index]
 
-    if(((sum_of_all_numbers % 10) + int_array[len(int_array) - 1]) == 10):
+    if(((sum_of_all_numbers % 10) + credit_card_number[len(credit_card_number) - 1]) == 10):
         return "Authentic"
     else:
         return "Fake"
