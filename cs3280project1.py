@@ -9,9 +9,6 @@ card_type_file = open(os.path.join(sys.path[0], "credit_card_types.ssv"), "r")
 card_type_info = card_type_file.read().split("\n")
 array_of_string_arrays = []
 
-def int_to_array(the_int):
-    return [int(x) for x in str(the_int)]
-
 def regex_check_for_errors(the_numbers):
     regex_string_16_digit = re.compile(r'^([0-9]{4}\D?){4}$')
     regex_string_13_15_digit = re.compile(r'^[0-9]{13,15}$')
@@ -73,7 +70,7 @@ def match_card_type_first_numbers(the_int, index_of_type_to_test):
 def print_credit_card_results(number):
     print("Credit card number: " + number)
     print("Credit card type: " + find_credit_card_type(number))
-    print("Luhn verification: " + utils.luhn_verified(int_to_array(number)))
+    print("Luhn verification: " + utils.luhn_verified(number))
 
 def get_input(prompt):
     print(prompt)
